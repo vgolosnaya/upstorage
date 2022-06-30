@@ -9,6 +9,7 @@ const LABELS = {
     extension: 'File Extension',
     timestamp: 'Timestamp',
     total: 'Total',
+    something_went_wrong: 'Something went wrong.',
 };
 
 export default LABELS;

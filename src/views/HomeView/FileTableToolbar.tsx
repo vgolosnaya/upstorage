@@ -7,6 +7,8 @@ import { fileActionCreators } from 'store/files/files.actions';
 import { useAppDispatch } from 'store/hooks';
 import { FileReaderContext } from 'index';
 import { Grid } from '@mui/material';
+import { FileException } from 'config';
+import { errorActionCreators } from '../../store/errors/errors.actions';
 
 const FileTableToolbar = (): JSX.Element => {
     const Input = styled('input')({
@@ -15,13 +17,21 @@ const FileTableToolbar = (): JSX.Element => {
     const fileReader = useContext(FileReaderContext);
     const dispatch = useAppDispatch();
     
-    const onFileUpload = async(event: Event<HTMLInputElement>) => {
-        const files = Array.from(event?.target.files || []);
+    const onFileUpload = async(event: Event) => {
+        const target = event?.target as HTMLInputElement;
+        const files = Array.from( target.files || []);
         
         while(files.length) {
             const file = files.shift()!;
-            const result = await fileReader.readFile(file);
-            dispatch(fileActionCreators.saveFileToStorage(result));
+            try {
+                const result = await fileReader.readFile(file);
+                dispatch(fileActionCreators.saveFileToStorage(result));
+            } catch(error) {
+                console.log(error);
+                if(error instanceof FileException){
+                    dispatch(errorActionCreators.showError(error.message));
+                }
+            }
         }
     };
     
@@ -34,14 +44,13 @@ const FileTableToolbar = (): JSX.Element => {
             </Grid>
             <Grid item xs={6} justifyContent="end" display="flex">
                 <label htmlFor="contained-button-file">
-                    <Input accept="text/csv,image/png" id="contained-button-file" multiple type="file" onChange={onFileUpload}/>
+                    <Input accept="text/csv,image/png, image/*" id="contained-button-file" multiple type="file" onInput={onFileUpload}/>
                     <Button variant="contained" component="span">
                         {LABELS.upload}
                     </Button>
                 </label>
             </Grid>
         </Grid>
-    
     );
 };
 

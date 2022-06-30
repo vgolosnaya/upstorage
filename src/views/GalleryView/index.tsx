@@ -17,7 +17,7 @@ const GalleryView = (): JSX.Element => {
                         image={file.data}
                         height="200"
                         alt={file.fileName}
-                        sx={{ 'object-fit': 'scale-down' }}
+                        sx={{ 'objectFit': 'scale-down' }}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="body2" component="div">

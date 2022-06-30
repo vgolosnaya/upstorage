@@ -1,5 +1,6 @@
 import Papa from 'papaparse';
 import { v4 } from 'uuid';
+import { config, FileException } from 'config';
 
 export type IFile = {
     fileName: string;
@@ -11,9 +12,11 @@ export type IFile = {
 
 class FileReaderService {
     instance: FileReader;
+    csvAllowedHeader: string;
     
-    constructor() {
+    constructor(csvAllowedHeader: string) {
         this.instance = new FileReader();
+        this.csvAllowedHeader = csvAllowedHeader;
     }
     
     static get allowedTypes() {
@@ -34,7 +37,7 @@ class FileReaderService {
         case FileReaderService.allowedTypes.png:
             return this.readPngFile(file);
         default:
-            throw new Error('unknown files type');
+            throw new FileException(config.errors.fileType);
         }
     }
     
@@ -44,7 +47,9 @@ class FileReaderService {
                 const dataUrl = event.target?.result as string;
                 if(dataUrl) {
                     resolve(this.createFile(file.name, file.type, dataUrl));
+                    return;
                 }
+                reject(new FileException(config.errors.readFileError));
             };
             this.instance.onerror = reject;
             this.instance.readAsDataURL(file);
@@ -56,8 +61,8 @@ class FileReaderService {
             Papa.parse(file, {
                 header: true,
                 complete: (results: any) => {
-                    if(results.meta.fields.length > 1 || results.meta.fields[0] !=='Total') {
-                        reject(new Error('unexpected csv files'));
+                    if(results.meta.fields.length > 1 || results.meta.fields[0] !== this.csvAllowedHeader) {
+                        reject(new FileException(config.errors.csvSyntax));
                     }
                     resolve(this.createFile(file.name, file.type, results.data));
                 },
