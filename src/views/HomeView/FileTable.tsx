@@ -1,9 +1,8 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import LABELS from '../../labels';
+import LABELS from 'labels';
 import React from 'react';
-import { useAppSelector } from '../../app/hooks';
-import filesSelectors from '../../app/files/files.selectors';
-import { formatRelative } from 'date-fns';
+import { useAppSelector } from 'store/hooks';
+import filesSelectors from 'store/files/files.selectors';
 
 const FileTable = ():JSX.Element => {
     const files = useAppSelector(filesSelectors.getRecent);

@@ -1,6 +1,6 @@
 import FilesActions from './files.actions';
-import { IFile } from '../../services/FileReader.service';
-import { PayloadAction } from '../../types';
+import { IFile } from 'services/FileReader.service';
+import { PayloadAction } from 'types';
 
 const filesReducer = (state = [], action: PayloadAction): IFile[] => {
     switch (action.type) {

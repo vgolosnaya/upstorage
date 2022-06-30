@@ -1,7 +1,7 @@
 import FilesActions, { fileActionCreators } from './files.actions';
-import { PayloadAction } from '../../types';
-import StorageService from '../../services/StorageService';
-import { IFile } from '../../services/FileReader.service';
+import { PayloadAction } from 'types';
+import StorageService from 'services/Storage.service';
+import { IFile } from 'services/FileReader.service';
 
 const filesMiddleware = (storageService: StorageService<IFile>) => (store: any) => (next: any) => (action: PayloadAction) => {
     switch(action.type) {

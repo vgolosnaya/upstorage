@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import filesReducer from './files/files.reducer';
-import { IFile } from '../services/FileReader.service';
-import filesMiddleware from './files/files.middleware';
-import StorageService from '../services/StorageService';
+import filesReducer from 'store/files/files.reducer';
+import { IFile } from 'services/FileReader.service';
+import filesMiddleware from 'store/files/files.middleware';
+import StorageService from 'services/Storage.service';
 
 const storageService = new StorageService<IFile>('files');
 

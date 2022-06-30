@@ -1,5 +1,5 @@
-import { RootState } from '../store';
-import FileReaderService, { IFile } from '../../services/FileReader.service';
+import { RootState } from 'store';
+import FileReaderService, { IFile } from 'services/FileReader.service';
 import { formatRelative } from 'date-fns';
 
 const formatDateTime = (file: IFile) => ({

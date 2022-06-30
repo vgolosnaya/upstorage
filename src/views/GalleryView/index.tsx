@@ -1,9 +1,8 @@
 import React from 'react';
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector } from 'store/hooks';
 import { Container, Card, CardMedia, CardContent, Typography } from '@mui/material';
-import filesSelectors from '../../app/files/files.selectors';
+import filesSelectors from 'store/files/files.selectors';
 import './index.css';
-import { formatRelative } from 'date-fns';
 
 const GalleryView = (): JSX.Element => {
     const images = useAppSelector(filesSelectors.getImages);

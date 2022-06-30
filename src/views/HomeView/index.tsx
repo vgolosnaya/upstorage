@@ -1,14 +1,11 @@
 import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
-import {
-    Button,
-    Container
-} from '@mui/material';
-import LABELS from '../../labels';
-import { Event } from '../../types';
-import { fileActionCreators } from '../../app/files/files.actions';
-import { useAppDispatch } from '../../app/hooks';
-import { FileReaderContext } from '../../index';
+import { Button } from '@mui/material';
+import LABELS from 'labels';
+import { Event } from 'types';
+import { fileActionCreators } from 'store/files/files.actions';
+import { useAppDispatch } from 'store/hooks';
+import { FileReaderContext } from 'index';
 import FileTable from './FileTable';
 
 const HomeView = (): JSX.Element => {

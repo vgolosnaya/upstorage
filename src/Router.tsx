@@ -1,10 +1,9 @@
 import React from 'react';
-import './App.css';
 import { Navigate, useRoutes } from 'react-router-dom';
-import LABELS from './labels';
-import HomeView from './views/HomeView';
-import GalleryView from './views/GalleryView';
-import SheetsView from './views/SheetsView';
+import LABELS from 'labels';
+import HomeView from 'views/HomeView';
+import GalleryView from 'views/GalleryView';
+import SheetsView from 'views/SheetsView';
 
 export const routes = [
     {

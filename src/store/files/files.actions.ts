@@ -1,4 +1,4 @@
-import { IFile } from '../../services/FileReader.service';
+import { IFile } from 'services/FileReader.service';
 
 export enum FilesActions {
     LOAD_FILES = 'LOAD_FILES',
