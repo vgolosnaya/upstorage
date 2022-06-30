@@ -3,13 +3,8 @@ import './App.css';
 import { Navigate, useRoutes } from 'react-router-dom';
 import LABELS from './labels';
 import HomeView from './views/HomeView';
-
-const GalleryView = function HomeView() {
-    return <div>Gallery</div>;
-};
-const SheetsView = function HomeView() {
-    return <div>Sheets</div>;
-};
+import GalleryView from './views/GalleryView';
+import SheetsView from './views/SheetsView';
 
 export const routes = [
     {

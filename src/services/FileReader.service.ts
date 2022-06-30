@@ -1,10 +1,12 @@
 import Papa from 'papaparse';
+import { v4 } from 'uuid';
 
 export type IFile = {
     fileName: string;
     data: any;
     type: string;
     datetime: number;
+    id: string;
 }
 
 class FileReaderService {
@@ -14,25 +16,25 @@ class FileReaderService {
         this.instance = new FileReader();
     }
     
-    get allowedTypes() {
+    static get allowedTypes() {
         return {
             csv: 'text/csv',
             png: 'image/png',
         };
     }
     
-    createFile(fileName: string, type: string, data: any): IFile{
-        return {fileName, data, type, datetime: Date.now()};
+    createFile(fileName: string, type: string, data: any): IFile {
+        return { fileName, data, type, datetime: Date.now(), id: v4() };
     }
     
     readFile(file: File): Promise<IFile> {
         switch(file.type) {
-        case this.allowedTypes.csv:
+        case FileReaderService.allowedTypes.csv:
             return this.readCsvFile(file);
-        case this.allowedTypes.png:
+        case FileReaderService.allowedTypes.png:
             return this.readPngFile(file);
         default:
-            throw new Error('unknown file type');
+            throw new Error('unknown files type');
         }
     }
     
@@ -54,8 +56,8 @@ class FileReaderService {
             Papa.parse(file, {
                 header: true,
                 complete: (results: any) => {
-                    if(results.meta.length > 1){
-                        reject(new Error('unexpected csv file'));
+                    if(results.meta.fields.length > 1 || results.meta.fields[0] !=='Total') {
+                        reject(new Error('unexpected csv files'));
                     }
                     resolve(this.createFile(file.name, file.type, results.data));
                 },
