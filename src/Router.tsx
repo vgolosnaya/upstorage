@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
-import { Navigate, Route, Routes, useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
+import LABELS from './labels';
+import HomeView from './views/HomeView';
 
-const HomeView = function HomeView() {
-    return <div>Home</div>;
-};
 const GalleryView = function HomeView() {
     return <div>Gallery</div>;
 };
@@ -12,21 +11,27 @@ const SheetsView = function HomeView() {
     return <div>Sheets</div>;
 };
 
-const routes = [
+export const routes = [
     {
         path: '/home',
-        element: <HomeView/>,
+        label: LABELS.home,
+        isNavRoute: true,
+        element: <HomeView />,
     }, {
-        path: 'image',
-        element: <GalleryView/>,
+        path: '/image',
+        label: LABELS.image,
+        isNavRoute: true,
+        element: <GalleryView />,
     }, {
-        path: 'sheets',
-        element: <SheetsView/>,
+        path: '/sheets',
+        label: LABELS.sheets,
+        isNavRoute: true,
+        element: <SheetsView />,
     },
     {
         path: '*',
-        element: <Navigate to="/home" replace={true}/>
-    }
+        element: <Navigate to="/home" replace />,
+    },
 ];
 
 function Router() {
