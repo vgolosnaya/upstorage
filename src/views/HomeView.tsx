@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import {
     Button,
@@ -12,8 +12,10 @@ import {
     TableRow, Typography
 } from '@mui/material';
 import LABELS from '../labels';
-import Papa from 'papaparse';
 import { Event } from '../types';
+import filesActions from '../app/file/file.actions';
+import { useAppDispatch } from '../app/hooks';
+import { FileReaderContext } from '../index';
 
 
 function createData(
@@ -35,47 +37,17 @@ const HomeView = (): JSX.Element => {
     const Input = styled('input')({
         display: 'none',
     });
-    const allowedTypes = {
-        csv: 'text/csv',
-        png: 'image/png',
-    };
+    const fileReader = useContext(FileReaderContext);
+    const dispatch = useAppDispatch();
     
-    const readPngFile = (file: any) => {
-        const fileReader = new FileReader();
-        
-        fileReader.onload = (event: ProgressEvent<FileReader>) => {
-            console.log(event.target?.result);
-        };
-        
-        fileReader.readAsDataURL(file);
-    };
-    
-    const readCsvFile = (file: any) => {
-        Papa.parse(file, {
-            header: true,
-            complete: function(results: any) {
-                console.log(results.data, results.meta);
-            },
-        });
-    };
-    
-    const onFileUpload = (event: Event<HTMLInputElement>) => {
+    const onFileUpload = async(event: Event<HTMLInputElement>) => {
         // eslint-disable-next-line no-unsafe-optional-chaining
         const files = Array.from(event?.target.files || []);
-        console.log(files);
-        files.forEach((file: any) => {
-            switch(file.type) {
-            case allowedTypes.csv:
-                readCsvFile(file);
-                return;
-            case allowedTypes.png:
-                readPngFile(file);
-                return;
-            default:
-                throw new Error('allowed types');
-            }
-        });
-        
+       
+        while(files.length) {
+            const file = files.shift()!;
+            dispatch(filesActions.readFileSuccess(await fileReader.readFile(file)));
+        }
     };
     
     return (
