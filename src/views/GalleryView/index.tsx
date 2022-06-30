@@ -2,7 +2,8 @@ import React from 'react';
 import { useAppSelector } from 'store/hooks';
 import { Container, Card, CardMedia, CardContent, Typography } from '@mui/material';
 import filesSelectors from 'store/files/files.selectors';
-import './index.css';
+import './index.scss';
+import LABELS from '../../labels';
 
 const GalleryView = (): JSX.Element => {
     const images = useAppSelector(filesSelectors.getImages);
@@ -23,7 +24,7 @@ const GalleryView = (): JSX.Element => {
                             {file.fileName}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Uploaded {file.relativeDateTime}
+                            {LABELS.uploaded} {file.relativeTimestamp}
                         </Typography>
                     </CardContent>
                 </Card>

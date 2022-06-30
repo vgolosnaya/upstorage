@@ -7,6 +7,7 @@ import { fileActionCreators } from 'store/files/files.actions';
 import { useAppDispatch } from 'store/hooks';
 import { FileReaderContext } from 'index';
 import FileTable from './FileTable';
+import FileTableToolbar from './FileTableToolbar';
 
 const HomeView = (): JSX.Element => {
     const Input = styled('input')({
@@ -27,12 +28,7 @@ const HomeView = (): JSX.Element => {
     
     return (
         <div className="container">
-            <label htmlFor="contained-button-file">
-                <Input accept="text/csv,image/png" id="contained-button-file" multiple type="file" onChange={onFileUpload}/>
-                <Button variant="contained" component="span">
-                    {LABELS.upload}
-                </Button>
-            </label>
+            <FileTableToolbar/>
             <FileTable/>
         </div>
     );

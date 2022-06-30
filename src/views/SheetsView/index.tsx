@@ -15,9 +15,9 @@ const SheetsView = (): JSX.Element => {
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>FileName</TableCell>
-                            <TableCell align="right">Total</TableCell>
-                            <TableCell align="right">Datetime</TableCell>
+                            <TableCell>{LABELS.fileName}</TableCell>
+                            <TableCell align="right">{LABELS.total}</TableCell>
+                            <TableCell align="right">{LABELS.timestamp}</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -30,7 +30,7 @@ const SheetsView = (): JSX.Element => {
                                     {file.fileName}
                                 </TableCell>
                                 <TableCell align="right">{file.total}</TableCell>
-                                <TableCell align="right">{file.relativeDateTime}</TableCell>
+                                <TableCell align="right">{file.relativeTimestamp}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>

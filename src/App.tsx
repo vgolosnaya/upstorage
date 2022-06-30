@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import 'App.css';
 import Router from 'Router';
 import AppMenu from 'common/AppMenu';
 import { useAppDispatch } from 'store/hooks';

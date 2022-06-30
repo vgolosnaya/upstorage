@@ -1,22 +1,19 @@
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import LABELS from 'labels';
 import React from 'react';
 import { useAppSelector } from 'store/hooks';
 import filesSelectors from 'store/files/files.selectors';
 
-const FileTable = ():JSX.Element => {
+const FileTable = (): JSX.Element => {
     const files = useAppSelector(filesSelectors.getRecent);
     return (
         <TableContainer component={Paper}>
-            <Typography variant="overline" component="div" gutterBottom>
-                {LABELS.recently_loaded}
-            </Typography>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>FileName</TableCell>
-                        <TableCell align="right">Extension</TableCell>
-                        <TableCell align="right">Datetime</TableCell>
+                        <TableCell>{LABELS.fileName}</TableCell>
+                        <TableCell align="right">{LABELS.extension}</TableCell>
+                        <TableCell align="right">{LABELS.timestamp}</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -29,7 +26,7 @@ const FileTable = ():JSX.Element => {
                                 {file.fileName}
                             </TableCell>
                             <TableCell align="right">{file.type}</TableCell>
-                            <TableCell align="right">{file.relativeDateTime}</TableCell>
+                            <TableCell align="right">{file.relativeTimestamp}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>

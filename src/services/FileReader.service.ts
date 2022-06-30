@@ -5,7 +5,7 @@ export type IFile = {
     fileName: string;
     data: any;
     type: string;
-    datetime: number;
+    timestamp: number;
     id: string;
 }
 
@@ -24,7 +24,7 @@ class FileReaderService {
     }
     
     createFile(fileName: string, type: string, data: any): IFile {
-        return { fileName, data, type, datetime: Date.now(), id: v4() };
+        return { fileName, data, type, timestamp: Date.now(), id: v4() };
     }
     
     readFile(file: File): Promise<IFile> {
