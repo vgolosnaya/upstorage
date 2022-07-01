@@ -7,7 +7,6 @@ const formatTimestamp = (file: IFile) => ({
     relativeTimestamp: formatRelative(file.timestamp, Date.now())
 });
 const formatCsv = (file: IFile & { relativeTimestamp: string }) => {
-    console.log(file);
     return {
         ...file,
         total: file.data.reduce((total: number, item: any) => total + Number(item.Total), 0)
