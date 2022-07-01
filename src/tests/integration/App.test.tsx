@@ -4,12 +4,15 @@ import App from 'App';
 import { Provider } from 'react-redux';
 import { store } from 'store';
 
-test('renders learn react link', () => {
-    const { getByText } = render(
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    );
-    
-    // expect(getByText(/learn/i)).toBeInTheDocument();
+describe('[INTEGRATION] Home page:', ()=>{
+    test('Should render home page', () => {
+        const component = render(
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        );
+        
+        expect(component.getByTestId('homepage')).toBeInTheDocument();
+    });
 });
+
