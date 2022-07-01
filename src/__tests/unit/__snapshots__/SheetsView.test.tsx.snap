@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[SNAPSHOT] Sheets page: Should match snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="container"
+    >
+      <span
+        class="MuiTypography-root MuiTypography-overline css-b3fch5-MuiTypography-root"
+      >
+        You don't have any file loaded
+      </span>
+    </div>
+  </div>
+</body>
+`;

@@ -4,18 +4,17 @@ import StorageService from 'services/Storage.service';
 import { IFile } from 'services/FileReader.service';
 import { errorActionCreators } from 'store/errors/errors.actions';
 import { config } from 'config';
-import { Store, Dispatch } from '@reduxjs/toolkit';
 
-const filesMiddleware = (storageService: StorageService<IFile>) => (store: Store) => (next: Dispatch) => (action: PayloadAction) => {
+const filesMiddleware = (storageService: StorageService<IFile>) => (store: any) => (next: any) => (action: PayloadAction) => {
     switch(action.type) {
     case FilesActions.LOAD_FILES: {
         store.dispatch(fileActionCreators.loadFilesSuccess(storageService.data));
         break;
     }
     case FilesActions.SAVE_FILE_TO_STORAGE:
-        try{
+        try {
             storageService.addItem(action.payload);
-        } catch(error){
+        } catch(error) {
             store.dispatch(errorActionCreators.showError(config.errors.largeFileSize.message));
         }
         store.dispatch(fileActionCreators.loadFilesSuccess(storageService.data));
