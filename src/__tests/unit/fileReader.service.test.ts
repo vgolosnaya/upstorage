@@ -1,6 +1,6 @@
+import FileReaderMock from '__tests/mocks/FileReaderMock';
 import FileReaderService, { IFile } from 'services/FileReader.service';
 import { config } from 'config';
-import { FileReaderMock } from '__tests/mocks/FileReaderMock';
 
 type PapaparseResult = {
     meta: {

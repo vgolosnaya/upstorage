@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from 'store';
 import React from 'react';
+import { Provider } from 'react-redux';
 import SheetsView from 'views/SheetsView';
+import { store } from 'store';
 
 describe('[SNAPSHOT] Sheets page:', ()=>{
     test('Should match snapshot', () => {

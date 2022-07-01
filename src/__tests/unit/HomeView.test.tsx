@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { store } from 'store';
 import React from 'react';
+import { Provider } from 'react-redux';
 import HomeView from 'views/HomeView';
+import { store } from 'store';
 
 describe('[SNAPSHOT] Home page:', ()=>{
     test('Should match snapshot', () => {

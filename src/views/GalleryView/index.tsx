@@ -1,9 +1,12 @@
 import React from 'react';
 import { useAppSelector } from 'store/hooks';
-import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 import filesSelectors from 'store/files/files.selectors';
-import LABELS from 'labels';
 import EmptyList from 'common/EmptyList';
+import LABELS from 'labels';
 import './index.scss';
 
 const GalleryView = (): JSX.Element => {

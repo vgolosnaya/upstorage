@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
-import { Button, Typography, Grid } from '@mui/material';
-import LABELS from 'labels';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import { Event } from 'types';
-import { fileActionCreators } from 'store/files/files.actions';
 import { useAppDispatch } from 'store/hooks';
-import { FileException } from 'config';
+import { fileActionCreators } from 'store/files/files.actions';
 import { errorActionCreators } from 'store/errors/errors.actions';
 import FileReaderContext from 'FileReaderContext';
+import { FileException } from 'config';
+import LABELS from 'labels';
 
 const FileTableToolbar = (): JSX.Element => {
     const Input = styled('input')({

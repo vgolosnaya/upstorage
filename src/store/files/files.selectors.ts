@@ -1,7 +1,7 @@
 import { RootState } from 'store';
 import { IFile } from 'services/FileReader.service';
 import { formatRelative } from 'date-fns';
-import { config } from '../../config';
+import { config } from 'config';
 
 const formatTimestamp = (file: IFile) => ({
     ...file,
@@ -10,7 +10,7 @@ const formatTimestamp = (file: IFile) => ({
 const formatCsv = (file: IFile & { relativeTimestamp: string }) => {
     return {
         ...file,
-        total: file.data.reduce((total: number, item: any) => total + Number(item.Total), 0)
+        total: file.data.reduce((total: number, item: { Total: string }) => total + Number(item.Total), 0)
     };
 };
 const filesSelectors = {

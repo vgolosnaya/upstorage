@@ -19,7 +19,7 @@ class FileReaderService {
         this.csvAllowedHeader = csvAllowedHeader;
     }
     
-    createFile(fileName: string, type: string, data: any): IFile {
+    createFile(fileName: string, type: string, data: string | {Total: string}[]): IFile {
         return { fileName, data, type, timestamp: Date.now(), id: v4() };
     }
     

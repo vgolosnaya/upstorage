@@ -1,11 +1,15 @@
 import React from 'react';
-import {
-    Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow
-} from '@mui/material';
-import LABELS from 'labels';
-import filesSelectors from 'store/files/files.selectors';
-import { useAppSelector } from 'store/hooks';
 import EmptyList from 'common/EmptyList';
+import Paper from '@mui/material/Paper';
+import TableContainer from '@mui/material/TableContainer';
+import Table from '@mui/material/Table';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableBody from '@mui/material/TableBody';
+import { useAppSelector } from 'store/hooks';
+import filesSelectors from 'store/files/files.selectors';
+import LABELS from 'labels';
 
 const SheetsView = (): JSX.Element => {
     const csvFiles = useAppSelector(filesSelectors.getCsv);

@@ -30,3 +30,4 @@ export class FileReaderMock {
         this.mockData = mockData;
     }
 }
+export default FileReaderMock;

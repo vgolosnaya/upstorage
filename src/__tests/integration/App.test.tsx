@@ -1,9 +1,9 @@
-import React from 'react';
 import { render, RenderResult, waitFor } from '@testing-library/react';
-import App from 'App';
-import { Provider } from 'react-redux';
-import { store } from 'store';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
+import { Provider } from 'react-redux';
+import App from 'App';
+import { store } from 'store';
 
 describe('[INTEGRATION] Home page:', () => {
     let component: RenderResult;

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Snackbar, Alert } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import errorsSelectors from 'store/errors/errors.selectors';
 import { errorActionCreators } from 'store/errors/errors.actions';
