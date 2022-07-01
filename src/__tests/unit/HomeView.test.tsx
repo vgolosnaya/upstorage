@@ -1,18 +1,17 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import App from 'App';
 import { Provider } from 'react-redux';
 import { store } from 'store';
+import React from 'react';
+import HomeView from 'views/HomeView';
 
-describe('[INTEGRATION] Home page:', ()=>{
-    test('Should render home page', () => {
+describe('[SNAPSHOT] Home page:', ()=>{
+    test('Should match snapshot', () => {
         const component = render(
             <Provider store={store}>
-                <App/>
+                <HomeView/>
             </Provider>
         );
         
-        expect(component.getByTestId('homepage')).toBeInTheDocument();
+        expect(component.baseElement).toMatchSnapshot();
     });
 });
-

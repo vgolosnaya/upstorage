@@ -10,6 +10,10 @@ export class FileException {
 
 export const config = {
     csvAllowedHeader: 'Total',
+    allowedTypes: {
+        csv: 'text/csv',
+        png: 'image/png',
+    },
     errors: {
         fileType: { type: 'fileType', message: 'Incorrect file extension' },
         csvSyntax: { type: 'csvSyntax', message: 'Incorrect csv syntax' },

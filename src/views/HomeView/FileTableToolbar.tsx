@@ -18,7 +18,7 @@ const FileTableToolbar = (): JSX.Element => {
     
     const onFileUpload = async(event: Event) => {
         const target = event?.target as HTMLInputElement;
-        const files = Array.from( target.files || []);
+        const files = Array.from(target.files || []);
         
         while(files.length) {
             const file = files.shift()!;
@@ -27,7 +27,7 @@ const FileTableToolbar = (): JSX.Element => {
                 dispatch(fileActionCreators.saveFileToStorage(result));
             } catch(error) {
                 console.log(error);
-                if(error instanceof FileException){
+                if(error instanceof FileException) {
                     dispatch(errorActionCreators.showError(error.message));
                 }
             }
@@ -43,7 +43,8 @@ const FileTableToolbar = (): JSX.Element => {
             </Grid>
             <Grid item xs={6} justifyContent="end" display="flex">
                 <label htmlFor="contained-button-file">
-                    <Input accept="text/csv,image/png" id="contained-button-file" multiple type="file" onInput={onFileUpload}/>
+                    <Input accept="text/csv,image/png" id="contained-button-file" multiple type="file"
+                        onInput={onFileUpload} data-testid="upload"/>
                     <Button variant="contained" component="span">
                         {LABELS.upload}
                     </Button>

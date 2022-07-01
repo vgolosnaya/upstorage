@@ -19,22 +19,15 @@ class FileReaderService {
         this.csvAllowedHeader = csvAllowedHeader;
     }
     
-    static get allowedTypes() {
-        return {
-            csv: 'text/csv',
-            png: 'image/png',
-        };
-    }
-    
     createFile(fileName: string, type: string, data: any): IFile {
         return { fileName, data, type, timestamp: Date.now(), id: v4() };
     }
     
     readFile(file: File): Promise<IFile> {
         switch(file.type) {
-        case FileReaderService.allowedTypes.csv:
+        case config.allowedTypes.csv:
             return this.readCsvFile(file);
-        case FileReaderService.allowedTypes.png:
+        case config.allowedTypes.png:
             return this.readPngFile(file);
         default:
             throw new FileException(config.errors.fileType);

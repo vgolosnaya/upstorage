@@ -1,6 +1,7 @@
 import { RootState } from 'store';
-import FileReaderService, { IFile } from 'services/FileReader.service';
+import { IFile } from 'services/FileReader.service';
 import { formatRelative } from 'date-fns';
+import { config } from '../../config';
 
 const formatTimestamp = (file: IFile) => ({
     ...file,
@@ -15,10 +16,10 @@ const formatCsv = (file: IFile & { relativeTimestamp: string }) => {
 const filesSelectors = {
     getFiles: (state: RootState) => state.files,
     getImages: (state: RootState) => state.files
-        .filter(({ type }) => type === FileReaderService.allowedTypes.png)
+        .filter(({ type }) => type === config.allowedTypes.png)
         .map(formatTimestamp),
     getCsv: (state: RootState) => state.files
-        .filter(({ type }) => type === FileReaderService.allowedTypes.csv)
+        .filter(({ type }) => type === config.allowedTypes.csv)
         .map(formatTimestamp).map(formatCsv),
     getRecent: (state: RootState) => state.files.slice(0, 5).map(formatTimestamp),
 };

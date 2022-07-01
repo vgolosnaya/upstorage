@@ -24,6 +24,7 @@ const FileTable = (): JSX.Element => {
                     {files.map((file) => (
                         <TableRow
                             key={file.id}
+                            data-testid={file.fileName}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
                             <TableCell component="th" scope="row">

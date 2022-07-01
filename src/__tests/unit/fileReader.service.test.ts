@@ -1,6 +1,6 @@
 import FileReaderService, { IFile } from 'services/FileReader.service';
 import { config } from 'config';
-import { FileReaderMock } from 'tests/mocks/FileReaderMock';
+import { FileReaderMock } from '__tests/mocks/FileReaderMock';
 
 type PapaparseResult = {
     meta: {
@@ -45,10 +45,6 @@ describe('FileReader Service:', () => {
     test('Should create instance correctly', () => {
         expect(fileReader).toBeDefined();
         expect(fileReader).toBeInstanceOf(FileReaderService);
-    });
-    
-    test('Should return allowed types', () => {
-        expect(FileReaderService.allowedTypes).toEqual(mockAllowedTypes);
     });
     
     test('Should create file', () => {
