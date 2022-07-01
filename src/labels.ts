@@ -10,6 +10,7 @@ const LABELS = {
     timestamp: 'Timestamp',
     total: 'Total',
     something_went_wrong: 'Something went wrong.',
+    empty_list: 'You don\'t have any file loaded',
 };
 
 export default LABELS;

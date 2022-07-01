@@ -1,11 +1,15 @@
+import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import LABELS from 'labels';
-import React from 'react';
 import { useAppSelector } from 'store/hooks';
 import filesSelectors from 'store/files/files.selectors';
+import EmptyList from 'common/EmptyList';
 
 const FileTable = (): JSX.Element => {
     const files = useAppSelector(filesSelectors.getRecent);
+    if(!files.length) {
+        return <EmptyList/>;
+    }
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">

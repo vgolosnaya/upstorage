@@ -1,5 +1,5 @@
 import React from 'react';
-import LABELS from '../labels';
+import LABELS from 'labels';
 import { Typography } from '@mui/material';
 
 class ErrorBoundary extends React.Component<any, { hasError: boolean }> {

@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { styled } from '@mui/material/styles';
-import { Button, Typography } from '@mui/material';
+import { Button, Typography, Grid } from '@mui/material';
 import LABELS from 'labels';
 import { Event } from 'types';
 import { fileActionCreators } from 'store/files/files.actions';
 import { useAppDispatch } from 'store/hooks';
-import { Grid } from '@mui/material';
 import { FileException } from 'config';
 import { errorActionCreators } from 'store/errors/errors.actions';
 import FileReaderContext from 'FileReaderContext';

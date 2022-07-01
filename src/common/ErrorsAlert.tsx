@@ -1,8 +1,8 @@
 import React from 'react';
 import { Snackbar, Alert } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import errorsSelectors from '../store/errors/errors.selectors';
-import { errorActionCreators } from '../store/errors/errors.actions';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import errorsSelectors from 'store/errors/errors.selectors';
+import { errorActionCreators } from 'store/errors/errors.actions';
 
 
 export const ErrorsAlert = () => {
