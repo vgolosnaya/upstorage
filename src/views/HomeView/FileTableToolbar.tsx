@@ -5,10 +5,10 @@ import LABELS from 'labels';
 import { Event } from 'types';
 import { fileActionCreators } from 'store/files/files.actions';
 import { useAppDispatch } from 'store/hooks';
-import { FileReaderContext } from 'index';
 import { Grid } from '@mui/material';
 import { FileException } from 'config';
-import { errorActionCreators } from '../../store/errors/errors.actions';
+import { errorActionCreators } from 'store/errors/errors.actions';
+import FileReaderContext from 'FileReaderContext';
 
 const FileTableToolbar = (): JSX.Element => {
     const Input = styled('input')({
@@ -44,7 +44,7 @@ const FileTableToolbar = (): JSX.Element => {
             </Grid>
             <Grid item xs={6} justifyContent="end" display="flex">
                 <label htmlFor="contained-button-file">
-                    <Input accept="text/csv,image/png, image/*" id="contained-button-file" multiple type="file" onInput={onFileUpload}/>
+                    <Input accept="text/csv,image/png" id="contained-button-file" multiple type="file" onInput={onFileUpload}/>
                     <Button variant="contained" component="span">
                         {LABELS.upload}
                     </Button>
